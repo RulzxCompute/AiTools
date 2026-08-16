@@ -1,0 +1,178 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #030303;
+  --color-surface: #0a0a0a;
+  --color-surface-elevated: #111111;
+  --color-border: #1f1f1f;
+  --color-border-hover: #2a2a2a;
+  --color-text: #fafafa;
+  --color-text-muted: #a1a1aa;
+  --color-text-subtle: #71717a;
+  --color-accent: #3b82f6;
+  --color-accent-hover: #2563eb;
+  --color-accent-muted: #1e3a5f;
+
+  --font-sans: Inter, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", Fira Code, monospace;
+
+  --spacing-18: 4.5rem;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    font-family: var(--font-sans);
+    background-color: var(--color-background);
+    color: var(--color-text);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+  }
+
+  ::selection {
+    background-color: var(--color-accent-muted);
+    color: var(--color-text);
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-background);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-border-hover);
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: var(--color-background);
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply btn bg-accent text-white hover:bg-accent-hover;
+  }
+
+  .btn-secondary {
+    @apply btn bg-surface-elevated text-text border border-border hover:bg-surface-elevated/80 hover:border-border-hover;
+  }
+
+  .btn-ghost {
+    @apply btn bg-transparent text-text-muted hover:bg-surface-elevated hover:text-text;
+  }
+
+  .btn-icon {
+    @apply btn p-2 rounded-lg;
+  }
+
+  .input {
+    @apply w-full px-3 py-2 text-sm bg-surface-elevated border border-border text-text placeholder-text-subtle rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent;
+  }
+
+  .card {
+    @apply bg-surface border border-border rounded-xl overflow-hidden transition-all hover:border-border-hover;
+  }
+
+  .card-hover {
+    @apply card hover:bg-surface-elevated hover:shadow-[0_4px_20px_rgba(0,0,0,0.3)];
+  }
+
+  .sidebar-link {
+    @apply flex items-center gap-3 px-3 py-2.5 text-sm text-text-muted rounded-lg transition-colors hover:bg-surface-elevated hover:text-text focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+
+  .sidebar-link-active {
+    @apply bg-accent-muted text-accent;
+  }
+
+  .external-link {
+    @apply inline-flex items-center gap-1.5 text-sm text-text-muted hover:text-accent transition-colors;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2 py-0.5 text-xs font-medium rounded-full bg-surface-elevated border border-border text-text-muted;
+  }
+
+  .badge-accent {
+    @apply bg-accent-muted text-accent border-accent/30;
+  }
+
+  .code-block {
+    @apply bg-surface-elevated border border-border rounded-lg p-4 font-mono text-sm overflow-x-auto;
+  }
+
+  .tooltip {
+    @apply absolute z-50 px-2 py-1 text-xs text-text bg-surface-elevated border border-border rounded shadow-lg opacity-0 invisible transition-all;
+  }
+
+  .tooltip-trigger:hover .tooltip,
+  .tooltip-trigger:focus .tooltip {
+    @apply opacity-100 visible;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .animate-in {
+    animation: animateIn 0.2s ease-out;
+  }
+
+  .animate-out {
+    animation: animateOut 0.15s ease-in;
+  }
+
+  @keyframes animateIn {
+    from {
+      opacity: 0;
+      transform: translateY(-4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes animateOut {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(-4px);
+    }
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
