@@ -237,6 +237,21 @@ export const resources: Resource[] = [
     isExternal: true,
     enabled: true,
   },
+  {
+    id: 'yylo',
+    name: 'YYLO',
+    description: 'Command-line orchestrator for coding agents with typed task, validation, merge, and release-readiness boundaries',
+    url: 'https://github.com/yylo-dev/yylo',
+    category: 'ai-tools',
+    icon: 'Terminal',
+    tags: ['cli', 'coding-agents', 'orchestration', 'worktrees', 'merge-queue'],
+    docsUrl: 'https://github.com/yylo-dev/yylo#readme',
+    githubUrl: 'https://github.com/yylo-dev/yylo',
+    createdAt: '2026-01-06',
+    updatedAt: '2026-09-08',
+    isExternal: true,
+    enabled: true,
+  },
 ];
 
 export function getResourcesByCategory(categorySlug: string): Resource[] {
